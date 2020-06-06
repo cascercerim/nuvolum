@@ -1,110 +1,147 @@
-// .mr-auto {
-//   margin-right: auto !important;
-// }
-
-.site-navigation {
-  height: 65px;
+// Toolbar Navigation
+.toolbar {
+  // position of Navbar stays fixed to top of screen
+  position: fixed;
   width: 100%;
-  background: #404040;
-  display: flex;
-  justify-content: space-between;
-  color: $text-color;
+  background-color: $navbar-color;
+  height: 54px;
+}
 
-  .menu-title {
-    font-size: 24px;
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    margin-left: 30px;
+.toolbar_navigation {
+  // flexbox used for positioning
+  display: flex;
+  align-items: center;
+  margin-top: 7px;
+  margin-left: 12px;
+}
+.toolbar_logo {
+  margin-left: 1rem;
+
+  a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
   }
-  .ion-ios-menu {
-    font-size: 36px;
-    width: 65px;
-    align-items: center;
-    cursor: pointer;
+}
+.toolbar_navigation-items ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+
+  li {
+    padding: 0 0.5rem;
+  }
+  a {
+    color: $text-color;
+    text-decoration: none;
+  }
+}
+// moves a tags to the right
+.spacer {
+  flex: 1;
+}
+
+.toolbar_navigation-items a:hover,
+.toolbar_navigation-items a:active {
+  color: $text-link;
+}
+
+// TOGGLE BUTTON
+.toggle-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 25px;
+  width: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.toggle-button:focus {
+  outline: none;
+}
+
+.toggle-button_line {
+  width: 30px;
+  height: 1px;
+  background: white;
+}
+
+// Side Drawer
+.side-drawer {
+  height: 100%;
+  background-color: white;
+  box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%;
+  max-width: 400px;
+  z-index: 200;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-out;
+}
+
+.side-drawer.open {
+  transform: translateX(0);
+}
+
+.side-drawer ul {
+  height: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.side-drawer li {
+  margin: 0.5rem 0;
+}
+
+.side-drawer a {
+  color: #2997ff;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.side-drawer a:hover,
+.side-drawer a:active {
+  color: $navfoot-background;
+}
+
+// takes full page width and height
+// makes page background darker when side navbar is opened
+.backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 100;
+}
+
+@media (max-width: 768px) {
+  .toolbar_navigation-items {
     display: none;
   }
-
-  .menu-content-container {
-    display: flex;
-    align-items: center;
-    padding-right: 30px;
-
-    .ant-avatar {
-      background: $background;
-      border: 1px solid $border;
-    }
-    .menu-avatar-name {
-      font-size: 18px;
-      margin-left: 15px;
-    }
-  }
-
-  ul {
-    height: 100%;
-    margin-block-start: 0;
-    margin-block-end: 0;
-    padding-inline-start: 0;
-    display: flex;
-    align-items: center;
-    list-style-type: none;
-    padding: 0 20px 0 50px;
-
-    a {
-      text-decoration: none;
-      padding: 0 20px 0 20px;
-      font-size: 20px;
-      color: $text-color;
-
-      &:hover {
-        color: $text-link;
-      }
-    }
+}
+@media (min-width: 769px) {
+  .side-drawer {
+    display: none;
   }
 }
 
-@media screen and (max-width: 900px) {
-  .site-navigation {
-    .menu-content-container {
-      width: 300px;
-      height: calc(100% - 65px);
-      background: white;
-      position: absolute;
-      top: 65px;
-      left: -300px;
-      transition: 300ms ease left;
-      flex-direction: column-reverse;
-      padding: 0;
-      padding-left: 30px;
-      a {
-        width: 100%;
-        padding: 0;
-      }
-
-      li {
-        height: 65px;
-        display: flex;
-        align-items: center;
-      }
-
-      ul {
-        flex-direction: column;
-        justify-content: flex-start;
-        padding: 0;
-        padding-top: 20px;
-      }
-
-      ul,
-      li {
-        width: 100%;
-      }
-
-      &.active {
-        left: 0px;
-      }
-    }
-    .ion-ios-menu {
-      display: flex;
-    }
+@media (min-width: 769px) {
+  .toolbar_toggle-button {
+    display: none;
+  }
+  .toolbar_logo {
+    margin: 0;
   }
 }

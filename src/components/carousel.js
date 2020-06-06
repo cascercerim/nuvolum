@@ -18,17 +18,19 @@ class Carousel extends Component {
         }
         return (
             <div className="slider">
-                <Slider {...settings}>
-                    {images.map((props) => {
-                        return (
-                            <img
-                                key={props.id}
-                                src={props.image}
-                                alt={props.image}
-                            />
-                        )
-                    })}
-                </Slider>
+                <div className="slick">
+                    <Slider {...settings}>
+                        {images.map((props) => {
+                            return (
+                                <img className="images"
+                                    key={props.id}
+                                    src={props.image}
+                                    alt={props.image}
+                                />
+                            )
+                        })}
+                    </Slider>
+                </div>
             </div>
         );
     }
